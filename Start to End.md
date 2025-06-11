@@ -485,6 +485,20 @@ network visually.
 
 
 
+Creating participants in bussiness network
+
+
+![Screenshot 2025-06-11 185601](https://github.com/user-attachments/assets/8e3674a1-f193-4a5a-b929-0361a8320487)
+
+
+
+
+Records of transactions
+
+
+
+![Screenshot 2025-06-11 185713](https://github.com/user-attachments/assets/49c77624-e3a9-421f-8dca-67f190ba3863)
+
 
 
 
