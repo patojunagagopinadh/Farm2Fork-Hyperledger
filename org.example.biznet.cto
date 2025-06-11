@@ -1,0 +1,216 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Write your model definitions here
+ */
+
+namespace org.example.biznet
+
+
+// concept Trace {
+//     o DateTime timestamp
+//     o String location
+//     --> Actor owner
+// }
+
+// Participants
+
+abstract participant Actor {
+  // o String actorId
+  o String firstName
+  o String lastName
+  o Double accountBalance 
+  // o String actorLocation
+}
+
+// participant Manufacturer identified by manufacturerId extends Actor {
+//   o String manufacturerId
+// }
+
+participant Farmer identified by farmerId extends Actor {
+  o String farmerId
+}
+
+participant Shipper identified by shipperId extends Actor {
+  o String shipperId
+}
+
+participant Warehouseman identified by warehousemanId extends Actor {
+  o String warehousemanId
+}
+
+participant Distributor identified by distributorId extends Actor {
+  o String distributorId
+}
+
+participant Retailer identified by retailerId extends Actor {
+  o String retailerId
+}
+
+// participant Consumer extends Actor {
+  
+// }
+
+
+// Assets
+
+asset Product identified by productId {
+  o String productId
+  o String name
+  o String variety
+  o ProductType productType default="FOOD"
+  o String quantity
+  o ProductStatus productStatus default="INITIATED"
+  o String harvestLocation
+  o DateTime manufactured optional
+  o DateTime expiry optional
+  o String[] pesticides
+  o String[] fertilizers
+  o String[] seeds
+  o Integer rating
+  --> Actor owner
+  // o String location
+  // o Trace[] trace
+  // Date of each purchase is required - query
+  // --> Product[] pesticides optional
+  // --> Product[] fertilizers optional
+  // --> Product[] seeds optional
+}
+
+enum ProductType {
+  o FERTILIZER
+  o PESTICIDE
+  o SEED
+  o FOOD
+}
+
+enum ProductStatus {
+  o INITIATED
+  o HARVESTED
+}
+
+asset Contract identified by contractId {
+  o String contractId
+  // --> Manufacturer manufacturer optional
+  --> Warehouseman warehouseman optional
+  --> Farmer farmer optional
+  --> Distributor distributor optional
+  --> Retailer retailer optional
+  --> Shipper shipper optional
+  // --> Product input
+  --> Product product
+  o Double unitPrice
+  o Double unitCount
+  o String termsandcondtns
+  o DateTime issuedDate
+  o DateTime promisedDate
+}
+
+asset Shipment identified by shipmentId {
+  o String shipmentId
+  --> Contract contract
+  o String modeOfTransport
+  o String currentLocation
+  o ShipmentStatus shipmentStatus default="CREATED"
+  --> Actor inCustodyOf
+}
+
+enum ShipmentStatus {
+  o CREATED
+  o IN_TRANSIT
+  o AT_WAREHOUSE
+  o AT_DISTRIBUTOR
+  o AT_RETAILER
+}
+
+transaction DummyData {
+}
+
+transaction CreateProduct {
+  // --> Product product
+  // --> Farmer farmer
+  o String name
+  o String variety
+  o ProductType productType
+  o String quantity
+  o ProductStatus productStatus
+  o String harvestLocation
+  o Integer daysForExpiry
+  o String[] pesticides
+  o String[] fertilizers
+  o String[] seeds
+  o Integer rating
+  o String ownerType
+  o String ownerId
+
+  // --> Product[] pesticides
+  // --> Product[] fertilizers
+  // --> Product[] seeds
+}
+
+transaction CreateContract {
+  // --> Product product
+  //--> Farmer farmer optional
+  // --> Distributor distributor optional
+  // --> Retailer retailer optional
+  // o String manufacturerId optional
+  o String warehousemanId optional
+  o String farmerId optional
+  o String distributorId optional
+  o String retailerId optional
+  o String shipperId optional
+  // o String inputProductId
+  o String productId
+  o Double unitPrice
+  o Double unitCount
+  o String termsandcondtns
+
+  // o DateTime issuedDate
+  o Integer promisedNoOfDays
+}
+
+transaction CreateShipment {
+  // --> Contract contract
+  // --> Shipment shipment
+  o String contractId
+  o String modeOfTransport
+  o String currentLocation
+  o ShipmentStatus shipmentStatus default="CREATED"
+  // o String ownerId
+  o String inCustodyOfType
+  o String inCustodyOfId
+}
+
+transaction ShipmentStatusUpdate {
+  --> Shipment shipment
+  o ShipmentStatus shipmentStatus
+}
+
+transaction ProductStatusUpdate {
+  --> Product product
+  o ProductStatus productStatus
+}
+
+transaction ProductOwnerChange {
+  --> Product product
+  o String ownerType
+  o String ownerId
+}
+
+transaction ShipmentInCustodyOfChange {
+  --> Shipment shipment
+  o String inCustodyOfType
+  o String inCustodyOfId
+}
