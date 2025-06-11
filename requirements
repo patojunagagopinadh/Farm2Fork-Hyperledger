@@ -1,1 +1,14 @@
-
+Linux (UBUNTU 18.04)
+Docker, Docker composer 
+Hyperledger composer requisties
+ - node
+ - nvm
+ - python
+Tools to interact with Blockchain network 
+- client
+- generator
+- composer-rest-server
+- yomen
+- composer playground
+Hyperledger Composer 
+Hyperledger Fabric
