@@ -65,6 +65,39 @@ farm2fork app at    local host:4200
 
 
 
+Creating participants within the app
+
+
+
+![Screenshot 2025-06-11 185713](https://github.com/user-attachments/assets/7c40c259-6c9b-430a-9d91-44f612ec2648)
+
+
+
+![Screenshot 2025-06-11 190025](https://github.com/user-attachments/assets/c8fb2dc4-a50a-477d-b189-8dacd6bdced5)
+
+
+
+![Screenshot 2025-06-11 190025](https://github.com/user-attachments/assets/56d0dcfa-8bad-44e1-a376-3783b30c6de2)
+
+
+
+
+![Screenshot 2025-06-11 190111](https://github.com/user-attachments/assets/307b919f-87c2-4044-9be5-6e918170954d)
+
+
+
+
+
+![Screenshot 2025-06-11 190145](https://github.com/user-attachments/assets/c952fcda-0699-4e31-af86-b7e888df4c8b)
+
+
+
+
+
+Records of Transactions
+
+
+![Screenshot 2025-06-11 190216](https://github.com/user-attachments/assets/7e2a7e3a-1f3c-4380-9796-22f242f0c4d6)
 
 
 
